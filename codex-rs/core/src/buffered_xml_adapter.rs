@@ -1,6 +1,6 @@
 //! Buffered XML Response Adapter for handling fragmented XML streaming
 //!
-//! This adapter handles models like glm-4.6 that stream XML tags in separate SSE chunks.
+//! This adapter handles models like qwen3-coder-480b-a35b-instruct-mlx that stream XML tags in separate SSE chunks.
 //! It buffers partial content and only transforms when complete XML structures are detected.
 
 use regex_lite::Regex;
@@ -47,7 +47,7 @@ impl BufferedXmlAdapter {
                     }
 
                     // If we have an incomplete tool_call in buffer when stream ends,
-                    // treat it as complete (glm-4.6 doesn't send closing tags)
+                    // treat it as complete (qwen3-coder-480b-a35b-instruct-mlx doesn't send closing tags)
                     if !self.buffer.is_empty() && self.buffer.contains("<tool_call>") {
                         // Add a closing tag to make it complete
                         self.buffer.push_str("</tool_call>");

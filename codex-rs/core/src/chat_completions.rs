@@ -312,8 +312,13 @@ pub(crate) async fn stream_chat_completions(
                 let (tx_event, rx_event) = mpsc::channel::<Result<ResponseEvent>>(1600);
                 let stream = resp.bytes_stream().map_err(CodexErr::Reqwest);
 
-                // Create XML adapter if needed for models like glm-4.6
-                let xml_adapter = if model_family.slug.to_lowercase().contains("glm") {
+                // Enable XML adapter for models that output XML format
+                let model_slug = model_family.slug.to_lowercase();
+                let xml_adapter = if model_slug.contains("glm-4.6")
+                    || model_slug.contains("qwen3-next-80b")
+                    || model_slug.contains("qwen3-coder-480b")
+                    || model_slug.contains("gala-glm")
+                {
                     Some(BufferedXmlAdapter::new())
                 } else {
                     None

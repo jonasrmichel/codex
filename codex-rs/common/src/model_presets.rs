@@ -68,17 +68,17 @@ const PRESETS: &[ModelPreset] = &[
     },
     // OSMI models
     ModelPreset {
-        id: "glm-4.6",
-        label: "glm-4.6",
-        description: "GLM-4.6 model hosted on OSMI",
-        model: "glm-4.6",
+        id: "qwen3-coder-480b-a35b-instruct-mlx",
+        label: "qwen3-coder-480b-a35b-instruct-mlx",
+        description: "Qwen3 Coder 480B model on OSMI",
+        model: "qwen3-coder-480b-a35b-instruct-mlx",
         effort: None,
     },
     ModelPreset {
-        id: "osmi-gala-glm-4.6",
-        label: "osmi/gala-glm-4.6",
-        description: "Gala-powered GLM-4.6 model on OSMI",
-        model: "osmi/gala-glm-4.6",
+        id: "osmi-gala-qwen3-coder",
+        label: "osmi/gala-qwen3-coder",
+        description: "Gala-powered Qwen3 Coder model on OSMI",
+        model: "osmi/gala-qwen3-coder",
         effort: None,
     },
     ModelPreset {
